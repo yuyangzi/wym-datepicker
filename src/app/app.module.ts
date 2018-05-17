@@ -3,12 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import { DatePickerModule} from '../wym-datepicker/module/date-picker.module';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    DatePickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
