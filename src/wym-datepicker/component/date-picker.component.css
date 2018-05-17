@@ -1,0 +1,91 @@
+.datePickerBox {
+  position: relative;
+}
+
+/*input 输入框样式*/
+.datePicker_input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  height: 24px;
+  line-height: 24px;
+  width: 230px;
+}
+.datePicker_input:focus {
+  outline: 0 none;
+  border: 1px solid #1abc9c;
+}
+
+
+/*日期选择框样式*/
+.ui_datePicker_wrap {
+  width: 240px;
+  height: 300px;
+  font-size: 16px;
+  color: #666;
+  position: absolute;
+  box-sizing: border-box;
+  top: 30px;
+  left: 0;
+}
+
+.ui_datePicker_wrap_show {
+  display: block;
+}
+
+.ui_datePicker_wrap .ui_datePicker_header {
+  padding: 0 20px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #f0f0f0;
+  border-bottom:1px solid #CCCCCC;
+  font-weight:bold;
+}
+
+.ui_datePicker_wrap .ui_datePicker_btn {
+  font-family: Serif, serif;
+  font-size: 20px;
+  width: 20px;
+  height: 40px;
+  line-height: 40px;
+  color: #1abc9c;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.ui_datePicker_wrap .ui_datePicker_prve_btn {
+  float: left;
+}
+
+.ui_datePicker_wrap .ui_datePicker_next_btn {
+  float: right;
+}
+
+.ui_datePicker_wrap .ui_datePicker_body table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ui_datePicker_wrap .ui_datePicker_body th,
+.ui_datePicker_wrap .ui_datePicker_body td {
+  height: 30px;
+  text-align: center;
+}
+
+.ui_datePicker_wrap .ui_datePicker_body th {
+  font-size: 12px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.ui_datePicker_wrap .ui_datePicker_body td {
+  border: 1px solid #f0f0f0;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+/* .ui_datePicker_wrap .ui_datePicker_body td:hover {
+  background-color: #1abc9c;
+} */

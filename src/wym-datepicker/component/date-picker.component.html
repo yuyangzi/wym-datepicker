@@ -1,0 +1,31 @@
+<div class="datePickerBox">
+  <input type="text" [value]="inputDate" class="datePicker_input" (click)="switchWrapShowState($event)">
+  <div class="ui_datePicker_wrap" *ngIf="isShowDateSelectWrap">
+    <div class="ui_datePicker_header">
+      <a href="#" class="ui_datePicker_btn ui_datePicker_prve_btn" (click)="switchDateMonth($event, 'prve')">&lt;</a>
+      <a href="#" class="ui_datePicker_btn ui_datePicker_next_btn" (click)="switchDateMonth($event, 'next')">&gt;</a>
+      <span class="ui_datePicker_current_month">{{MonthDate.year}}-{{MonthDate.month}}</span>
+    </div>
+    <div class="ui_datePicker_body">
+      <table>
+        <thead>
+        <tr>
+          <th>一</th>
+          <th>二</th>
+          <th>三</th>
+          <th>四</th>
+          <th>五</th>
+          <th>六</th>
+          <th>日</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of MonthDate.days">
+          <td *ngFor="let el of item" (click)="selectDate(el)">{{el.showDate}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
