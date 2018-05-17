@@ -1,8 +1,12 @@
 {
-  "name": "wym-datepicker",
+  "name": "wym-ngdatepicker",
   "version": "0.0.1",
   "main": "./dist/bundles/wym-datepicker.umd.js",
   "typings": "./dist/wym-datepicker.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuyangzi/ng-datepicker.git"
+  },
   "license": "MIT",
   "scripts": {
     "ng": "ng",
