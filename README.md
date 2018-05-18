@@ -1,4 +1,4 @@
-# WymDatepicker
+# wym-ngdatepicker
 
 &emsp;&emsp;基于`Angular6`的日期选择组件
 
