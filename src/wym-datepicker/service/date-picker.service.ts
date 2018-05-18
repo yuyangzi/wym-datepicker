@@ -13,11 +13,6 @@ export class DatePickerService {
 
   constructor() { }
 
-  /**
-   * 获取指定月份的日期
-   * @param {Date} _Date
-   * @returns {{year: number; month: number; days: any}}
-   */
   getMonthDate(_Date: Date = this.currentDate) {
     let year = _Date.getFullYear(), month = _Date.getMonth() + 1;
     // 获取到的日期数组
@@ -82,13 +77,6 @@ export class DatePickerService {
     };
   }
 
-  /**
-   * 判断当前元素是否存在指定父元素
-   * @param target
-   * @param {string} comparisonSelector
-   * @returns {boolean}
-   * @constructor
-   */
   DetermineIfThereParent(target, comparisonSelector: string): boolean {
     const parentElement = target.parentElement;
     if (parentElement) {

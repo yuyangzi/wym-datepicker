@@ -1,6 +1,6 @@
 {
   "name": "wym-ngdatepicker",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./dist/bundles/wym-datepicker.umd.js",
   "typings": "./dist/wym-datepicker.d.ts",
   "repository": {

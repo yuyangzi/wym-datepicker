@@ -48,10 +48,7 @@ export class DatePickerComponent implements OnInit {
   constructor(private datePickerService: DatePickerService) {
   }
 
-  /**
-   * 渲染数据
-   * @param {"prve" | "next"} derection
-   */
+  // 渲染数据
   render(derection: 'prve' | 'next') {
     let year, month;
     if (this.MonthDate) {

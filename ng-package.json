@@ -3,7 +3,7 @@
   "lib": {
     "entryFile": "public_api.ts",
     "languageLevel": ["dom", "es2017"],
-    "comments" : "none",
+    "comments": "none",
     "licensePath": "LICENSE"
   },
   "whitelistedNonPeerDependencies": ["."]
