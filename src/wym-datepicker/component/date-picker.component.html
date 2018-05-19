@@ -1,5 +1,8 @@
 <div class="datePickerBox">
-  <input type="text" [value]="inputDate" class="datePicker_input" (click)="switchWrapShowState($event)">
+  <div class="input_box">
+    <input type="text" [value]="inputDate" class="datePicker_input" (change)="verifyDate($event)" (click)="switchWrapShowState($event)">
+    <span class="icon-cancel-circle" (click)="clearDate()"></span>
+  </div>
   <div class="ui_datePicker_wrap" *ngIf="isShowDateSelectWrap">
     <div class="ui_datePicker_header">
       <a href="#" class="ui_datePicker_btn ui_datePicker_prve_btn" (click)="switchDateMonth($event, 'prve')">&lt;</a>
@@ -21,7 +24,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let item of MonthDate.days">
-          <td *ngFor="let el of item" (click)="selectDate(el)">{{el.showDate}}</td>
+          <td [class.currentDate]="isCurrentDate(el)" *ngFor="let el of item" (click)="selectDate(el)">{{el.showDate}}</td>
         </tr>
         </tbody>
       </table>

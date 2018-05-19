@@ -9,7 +9,7 @@ import {chunk} from 'lodash';
 export class DatePickerService {
 
   // 当前日期
-  private currentDate = new Date();
+  private currentDate: Date = new Date();
 
   constructor() { }
 

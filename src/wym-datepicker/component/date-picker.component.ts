@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DatePickerService} from '../service/date-picker.service';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'wym-date-picker',
@@ -8,14 +9,24 @@ import {DatePickerService} from '../service/date-picker.service';
 })
 export class DatePickerComponent implements OnInit {
 
+  // 日期格式
+  @Input() dateFormat = 'YYYY-MM-DD';
+
   // input框显示日期
-  public inputDate: string = (new Date()).toLocaleDateString().replace(/\//g, '-');
+  public inputDate: string = dayjs(new Date()).format(this.dateFormat);
 
   @Input()
   set _value(value) {
-    const date = new Date(value);
-    this.inputDate = DatePickerComponent.format(date);
+    if (dayjs(value).isValid()) {
+      this.inputDate = dayjs(value).format(this.dateFormat);
+    } else {
+      this.handleError.emit('输入属性 _value 传入的不是一个有效的时间');
+      throw Error('输入属性 _value 传入的不是一个有效的时间');
+    }
   }
+
+  // 今日日期
+  public dayDate: string = dayjs().format(this.dateFormat);
 
   // 月份信息
   public MonthDate;
@@ -26,14 +37,9 @@ export class DatePickerComponent implements OnInit {
   @Output()
   changeDate: EventEmitter<string> = new EventEmitter<string>();
 
-
-  static format(date): string {
-    date = new Date(date);
-    const year = date.getFullYear();
-    const month = date.getMonth() > 8 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1);
-    const day = date.getDate() >= 10 ? date.getDate() : '0' + date.getDate();
-    return year + '-' + month + '-' + day;
-  }
+  // 错误事件
+  @Output()
+  handleError: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnInit() {
     this.MonthDate = this.datePickerService.getMonthDate(new Date(this.inputDate));
@@ -49,7 +55,7 @@ export class DatePickerComponent implements OnInit {
   }
 
   // 渲染数据
-  render(derection: 'prve' | 'next') {
+  render(derection: 'prve' | 'next'): void {
     let year, month;
     if (this.MonthDate) {
       year = this.MonthDate.year;
@@ -78,26 +84,52 @@ export class DatePickerComponent implements OnInit {
   }
 
   // 切换是否显示日期选择框
-  switchWrapShowState() {
+  switchWrapShowState(): void {
     this.isShowDateSelectWrap = !this.isShowDateSelectWrap;
   }
 
   // 切换日期月份
-  switchDateMonth(event: Event, derection: 'prve' | 'next') {
+  switchDateMonth(event: Event, derection: 'prve' | 'next'): void {
     event.preventDefault();
     event.stopPropagation();
     this.render(derection);
   }
 
   // 选择日期
-  selectDate(el: DayModel) {
+  selectDate(el: DayModel): void {
     const date = new Date(this.MonthDate.year, this.MonthDate.month - 1, el.date);
-    const selectDate = DatePickerComponent.format(date);
+    const selectDate = dayjs(date).format(this.dateFormat);
     this.inputDate = selectDate;
     this.changeDate.emit(selectDate);
     this.isShowDateSelectWrap = false;
     this.MonthDate = this.datePickerService.getMonthDate(date);
   }
+
+  // 清除日期
+  clearDate() {
+    this.inputDate = '';
+    this.changeDate.emit(this.inputDate);
+  }
+
+  // 校验日期输入
+  verifyDate(event): void {
+    const value = event.target.value;
+    if (dayjs(value).isValid()) {
+      this.inputDate = dayjs(value).format(this.dateFormat);
+      this.changeDate.emit(this.inputDate);
+      this.MonthDate = this.datePickerService.getMonthDate(new Date(this.inputDate));
+    } else {
+      this.handleError.emit('input中输入的不是一个有效的时间');
+      throw Error('input中输入的不是一个有效的时间');
+    }
+  }
+
+  // 是否是当前日期
+  isCurrentDate(el: DayModel): boolean {
+    const date = new Date(this.MonthDate.year, this.MonthDate.month - 1, el.date);
+    return this.inputDate === dayjs(date).format(this.dateFormat);
+  }
+
 
 }
 
