@@ -55,18 +55,18 @@ export class DatePickerComponent implements OnInit {
   }
 
   // 渲染数据
-  render(derection: 'prve' | 'next'): void {
+  render(direction: 'prve' | 'next'): void {
     let year, month;
     if (this.MonthDate) {
       year = this.MonthDate.year;
       month = this.MonthDate.month;
     }
 
-    if (derection === 'prve') {
+    if (direction === 'prve') {
       month--;
     }
 
-    if (derection === 'next') {
+    if (direction === 'next') {
       month++;
     }
 
@@ -89,10 +89,10 @@ export class DatePickerComponent implements OnInit {
   }
 
   // 切换日期月份
-  switchDateMonth(event: Event, derection: 'prve' | 'next'): void {
+  switchDateMonth(event: Event, direction: 'prve' | 'next'): void {
     event.preventDefault();
     event.stopPropagation();
-    this.render(derection);
+    this.render(direction);
   }
 
   // 选择日期

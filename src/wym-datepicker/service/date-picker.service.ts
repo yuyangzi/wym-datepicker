@@ -19,10 +19,10 @@ export class DatePickerService {
     const days: Array<DayModel> = [];
 
     // 获取当前月的第一天
-    const fristDate = new Date(year, month - 1, 1);
+    const firstDate = new Date(year, month - 1, 1);
 
     // 获取当前月份的第一天是星期几,星期日的话转化为7
-    const fristDateWeekDay = fristDate.getDay() ? fristDate.getDay() : 7;
+    const firstDateWeekDay = firstDate.getDay() ? firstDate.getDay() : 7;
 
     // 使用Date对象的越界自动进位(退位)的特性获取到上一月的最后一天.
     const lastDayofLastMonth = new Date(year, month - 1, 0);
@@ -31,11 +31,11 @@ export class DatePickerService {
     const lastDateOfLastMonth = lastDayofLastMonth.getDate();
 
     // 计算当前月份的日期表中应显示多少上一月份的日期;
-    const prveMonthDate = fristDateWeekDay - 1;
+    const prveMonthDate = firstDateWeekDay - 1;
 
     // 获取到当月准确的年份和月份值;
-    year = fristDate.getFullYear();
-    month = fristDate.getMonth() + 1;
+    year = firstDate.getFullYear();
+    month = firstDate.getMonth() + 1;
 
     // 获取当前月的最后一天的日期天数
     const lastDate = new Date(year, month, 0).getDate();
